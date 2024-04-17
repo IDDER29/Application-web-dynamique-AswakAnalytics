@@ -21,16 +21,28 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./listOfMagazines.css" />
 
-    <title>magazines</title>
+    <title>Magazines</title>
   </head>
+
   <body id="body-pd">
     <header class="header" id="header">
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
       </div>
-      <div class="d-flex flex-row align-items-center gap-2">
+      <div class="d-flex flex-row align-items-center gap-3">
         <i class="bx bx-bell nav_icon"></i>
         <div class="header_img"><img src="./img/userImg.png" alt="user" /></div>
       </div>
@@ -39,8 +51,9 @@
       <nav class="nav">
         <div>
           <a href="#" class="nav_logo">
-           
-            <span class="nav_icon aside_logo"><img src="./img/logo.png" alt=""></span>
+            <span class="nav_icon aside_logo"
+              ><img src="./img/logo.png" alt=""
+            /></span>
             <span class="nav_logo-name">Aswak Salam</span>
           </a>
           <div class="nav_list">
@@ -66,10 +79,110 @@
       </nav>
     </div>
     <!--Container Main start-->
-    <div class="height-100 bg-light">
-      <h4>Main Components</h4>
+    <div
+      class="bg-light d-flex justify-content-center flex-column align-items-center"
+    >
+      <h1 class="fw-bold">Liste des Magasins</h1>
+      <div
+        style="width: 90%"
+        class="d-flex justify-content-center flex-column align-items-center gap-4"
+      >
+        <div class="container">
+          <div class="d-flex align-items-center gap-2">
+            <select class="form-select me-2">
+              <option selected>All</option>
+              <option value="1">Casa Blanca</option>
+              <option value="2">Agadir</option>
+              <option value="3">Rabat</option>
+              <option value="3">Tanger</option>
+            </select>
+            <hr class="flex-grow-1 my-2" />
+            <div class="border-start"></div>
+            <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
+              <label class="btn btn-secondary">
+                <input
+                  type="radio"
+                  name="card-layout"
+                  id="horizontal-radio"
+                  hidden
+                />
+                <i class="bi bi-grid-3x2-gap-fill"></i>
+              </label>
+              <label class="btn btn-secondary active">
+                <input
+                  type="radio"
+                  name="card-layout"
+                  id="vertical-radio"
+                  checked
+                  hidden
+                />
+                <i class="bi bi-list-ul"></i>
+              </label>
+            </div>
+          </div>
+          <div id="card-container"></div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+          <div class="col">
+            <div class="card h-90">
+              <img src="./img/stor_img.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title fs-3 fw-bold">Sidi maarouf</h5>
+                <p>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span> Casablanca, </span
+                  ><span class="fst-italic">sidi maarouf</span>
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-90">
+              <img src="./img/stor_img.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title fs-3 fw-bold">Sidi maarouf</h5>
+                <p>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span> Casablanca, </span
+                  ><span class="fst-italic">sidi maarouf</span>
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-90">
+              <img src="./img/stor_img.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title fs-3 fw-bold">Sidi maarouf</h5>
+                <p>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span> Casablanca, </span
+                  ><span class="fst-italic">sidi maarouf</span>
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-90">
+              <img src="./img/stor_img.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title fs-3 fw-bold">Sidi maarouf</h5>
+                <p>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span> Casablanca, </span
+                  ><span class="fst-italic">sidi maarouf</span>
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!--Container Main end-->
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
