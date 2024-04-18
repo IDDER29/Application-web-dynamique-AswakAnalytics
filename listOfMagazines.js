@@ -42,30 +42,36 @@ document.addEventListener("DOMContentLoaded", function (event) {
       street: "sidi maarouf",
     },
     {
-        name: "Sidi maarouf",
-        city: "Casablanca",
-        street: "sidi maarouf",
-      },
-      {
-        name: "Sidi maarouf",
-        city: "Casablanca",
-        street: "sidi maarouf",
-      },
-      {
-        name: "Sidi maarouf",
-        city: "Casablanca",
-        street: "sidi maarouf",
-      },
-      {
-        name: "Sidi maarouf",
-        city: "Casablanca",
-        street: "sidi maarouf",
-      },
+      name: "Sidi maarouf",
+      city: "Casablanca",
+      street: "sidi maarouf",
+    },
+    {
+      name: "Sidi maarouf",
+      city: "Casablanca",
+      street: "sidi maarouf",
+    },
+    {
+      name: "Sidi maarouf",
+      city: "Casablanca",
+      street: "sidi maarouf",
+    },
+    {
+      name: "Sidi maarouf",
+      city: "Casablanca",
+      street: "sidi maarouf",
+    },
   ];
+  
 
-  stors.forEach((stor) => {
-   
-    gridCardContiner.innerHTML += `
+
+  let selectedCity = document.getElementById("select-city-filter");
+  function appendCardsToConter(storsSelected) {
+    
+    
+    gridCardContiner.innerHTML ="";
+    storsSelected.forEach((stor) => {
+      gridCardContiner.innerHTML += `
     <div class="col">
     <div class="card h-90">
       <div class="card_row ">
@@ -86,7 +92,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
     `;
-  });
+    });
+   
+  }
+  appendCardsToConter(stors);
+  selectedCity.addEventListener('change', ()=> {
+    console.log("hi hi");
+    let filteredStors;
+
+    if(selectedCity.value == 'All'){
+      filteredStors = stors;
+    }else{
+      filteredStors = stors.filter(el => el.city == selectedCity.value);
+    }
+    console.log(filteredStors);
+    appendCardsToConter(filteredStors);
+    findSelected();
+   });
   // start the functionality of  change the sutation of the card uppers
 
   let radioBtn = document.querySelectorAll("input[name='card-layout']");
@@ -99,15 +121,30 @@ document.addEventListener("DOMContentLoaded", function (event) {
     radioBtn.forEach((radio) => {
       if (radio.checked) {
         radio.closest("label").classList.add("active");
+        if(radio.value =="vertical" ){
+          gridCardContiner.classList.add("row-cols-md-4");
+          cardContent.forEach((content) => content.classList.remove("col-md-8"));
+          gridCardContiner.classList.remove("row-cols-md-2");
+          cardImg.forEach((cImg) => cImg.classList.remove("col-md-4"));
+          cardRow.forEach((card) => {
+            card.classList.remove("row");
+            card.classList.remove("g-0");
+          });
 
-        gridCardContiner.classList.toggle("row-cols-md-4");
-        gridCardContiner.classList.toggle("row-cols-md-2");
-        cardRow.forEach((card) => {
-          card.classList.toggle("row");
-          card.classList.toggle("g-0");
-        });
-        cardImg.forEach((cImg) => cImg.classList.toggle("col-md-4"));
-        cardContent.forEach((content) => content.classList.toggle("col-md-8"));
+        }else if(radio.value == "horizontal"){
+          gridCardContiner.classList.add("row-cols-md-2");
+          cardContent.forEach((content) => content.classList.add("col-md-8"));
+          cardImg.forEach((cImg) => cImg.classList.add("col-md-4"));
+          gridCardContiner.classList.remove("row-cols-md-4");
+          cardRow.forEach((card) => {
+            card.classList.add("row");
+            card.classList.add("g-0");
+          });
+        }
+        
+     
+        
+        
       } else {
         radio.closest("label").classList.remove("active");
       }
@@ -118,5 +155,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     radio.addEventListener("change", findSelected);
   });
   findSelected();
+  
   // End the functionality of  change the sutation of the card uppers
 });
