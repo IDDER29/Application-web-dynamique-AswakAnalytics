@@ -41,12 +41,12 @@
                     <span class="nav_logo-name">Aswak Salam</span>
                 </a>
                 <div class="nav_list">
-                    <a href="#" class="nav_link active">
+                    <a href="./dashbord.html" class="nav_link active">
                         <i class="bx bxs-dashboard nav_icon"></i>
                         <!-- <i class="bx bx-grid-alt nav_icon"></i> -->
                         <span class="nav_name">Dashboard</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a href="./list_Of_Magazines.html" class="nav_link">
                         <i class="bx bxs-store-alt nav_icon"></i>
                         <span class="nav_name">Magasins</span>
                     </a>
@@ -68,75 +68,68 @@
         <h1 class="fw-bold">Liste des Magasins</h1>
         <div style="width: 90%" class="d-flex justify-content-center flex-column align-items-center gap-4">
             <div class="container">
-               <!--ADD your content-->
-                
-<div class="row">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">CA</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Effectif</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Surface</a>
-        </li>
-    </ul>
+                <!--ADD your content-->
 
-</div><br>
+                <div class="row">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">CA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Effectif</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Surface</a>
+                        </li>
+                    </ul>
 
-<div class="row row-cols-1 row-cols-md-3 g-3 justify-content-between ">
-    <!-- Card 1 -->
-    <div class="card border shadow mb-4">
-        <div class="card-body d-flex justify-content-center flex-column">
-            <h6 class="card-subtitle mb-2 text-muted">Moyenne arithmétique pondérée</h6>
-            <h4 class="card-title" id="ca_moyenne_arithm">Chargement...</h4>
-            <p class="card-text">Le chiffre d'affaires moyen de tous les magasins.</p>
-        </div>
-    </div>
+                </div><br>
 
-    <!-- Card 2 -->
-    <div class="card border shadow mb-4">
-        <div class="card-body d-flex justify-content-center flex-column">
-            <h6 class="card-subtitle mb-2 text-muted">Mode</h6>
-            <h4 class="card-title" id="ca_mode">Chargement...</h4>
-            <p class="card-text">Le chiffre d'affaire réalisé par le plus grand nombre de magasins est 4 764 000
-                DH.</p>
-        </div>
-    </div>
+                <div class="row row-cols-1 row-cols-md-3 g-3 justify-content-between ">
+                    <!-- Card 1 -->
+                    <div class="card border shadow mb-4">
+                        <div class="card-body d-flex justify-content-center flex-column">
+                            <h6 class="card-subtitle mb-2 text-muted">Moyenne arithmétique pondérée</h6>
+                            <h4 class="card-title" id="ca_moyenne_arithm">Chargement...</h4>
+                            <p class="card-text">Le chiffre d'affaires moyen de tous les magasins.</p>
+                        </div>
+                    </div>
 
-    <!-- Card 3 -->
-    <div class="card border shadow mb-4">
-        <div class="card-body d-flex justify-content-center flex-column">
-            <h6 class="card-subtitle mb-2 text-muted">Médiane</h6>
-            <h4 class="card-title" id="ca_mediane">Chargement...</h4>
-            <p class="card-text">50% des magasins réalisent un chiffre d'affaires inférieur à 4 700 000 DHs et
-                50% réalisent un chiffre d'affaires supérieur à ce résultat.</p>
-        </div>
-    </div>
-    <canvas id="myChart" style="width:100%;max-width:600px;max-height: 300px;"></canvas>
+                    <!-- Card 2 -->
+                    <div class="card border shadow mb-4">
+                        <div class="card-body d-flex justify-content-center flex-column">
+                            <h6 class="card-subtitle mb-2 text-muted">Mode</h6>
+                            <h4 class="card-title" id="ca_mode">Chargement...</h4>
+                            <p class="card-text">Le chiffre d'affaire réalisé par le plus grand nombre de magasins est 4
+                                764 000
+                                DH.</p>
+                        </div>
+                    </div>
 
-    <div class="card border shadow mb-4 ">
-        <div class="card-body d-flex justify-content-around flex-column">
-            <h6 class="card-subtitle mb-2 text-muted">Ecart-type et coefficient de variation</h6>
-            <h4 class="card-title" id="ecart_type_x">Chargement...</h4>
-            <p class="card-text">l'écart-type montre que les CA des magasins s'écartent en moyenne de
-                610000dhs, et le coefficient de variation est de 0,131 ce qui signifie que l'écart type
-                represente 13,1% de la moyenne, donc la plupart des CA sont centrés autour du CA moyen</p>
-        </div>
-    </div>
-    <!-- <div class="card" style="width: 22rem;">
-    <div class="card border" style="width: 1fr; " >
-        <div class="card-body shadow">
-            <h6 class="card-subtitle mb-2 text-muted">Ecart-type et coefficient de variation</h6>
-            <h4 class="card-title">XX,X %</h4>
-            <p class="card-text">l'écart-type montre que les CA des magasins s'écartent en moyenne de
-                610000dhs, et le coefficient de variation est de 0,131 ce qui signifie que l'écart type
-                represente 13,1% de la moyenne, donc la plupart des CA sont centrés autour du CA moyen</p>
-        </div>
-    </div>
-</div> -->
-</div>
+                    <!-- Card 3 -->
+                    <div class="card border shadow mb-4">
+                        <div class="card-body d-flex justify-content-center flex-column">
+                            <h6 class="card-subtitle mb-2 text-muted">Médiane</h6>
+                            <h4 class="card-title" id="ca_mediane">Chargement...</h4>
+                            <p class="card-text">50% des magasins réalisent un chiffre d'affaires inférieur à 4 700 000
+                                DHs et
+                                50% réalisent un chiffre d'affaires supérieur à ce résultat.</p>
+                        </div>
+                    </div>
+                    <canvas id="myChart" style="width:100%;max-width:600px;max-height: 300px;"></canvas>
+
+                    <div class="card border shadow mb-4 ">
+                        <div class="card-body d-flex justify-content-around flex-column">
+                            <h6 class="card-subtitle mb-2 text-muted">Ecart-type et coefficient de variation</h6>
+                            <h4 class="card-title" id="ecart_type_x">Chargement...</h4>
+                            <p class="card-text">l'écart-type montre que les CA des magasins s'écartent en moyenne de
+                                610000dhs, et le coefficient de variation est de 0,131 ce qui signifie que l'écart type
+                                represente 13,1% de la moyenne, donc la plupart des CA sont centrés autour du CA moyen
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
             <div class="grid_container row row-cols-1 row-cols-md-4 g-4">
@@ -155,7 +148,7 @@
         let caData_JSON = [100, 150, 200, 250, 300];
         let yValues = [100, 150, 200, 250, 300];
 
-     //   let yValues = JSON.parse(caData_JSON);
+        //   let yValues = JSON.parse(caData_JSON);
 
 
         new Chart("myChart", {
@@ -188,18 +181,21 @@
     </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"></script>
 
-<script src="./tamplet.js"></script>
+    <script src="./tamplet.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"></script>
     <script src="display_moyen_arrith.js" defer></script>
     <script src="display_mode.js" defer></script>
     <script src="display_mediane.js" defer></script>
     <script src="display_ecart_type.js" defer></script>
+
+
+    </script>
 
 
 </body>

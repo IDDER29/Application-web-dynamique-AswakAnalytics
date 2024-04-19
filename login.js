@@ -9,8 +9,8 @@ function loginUser(event) {
     
     if (adresse_email === "admin@asswak.com" && password === "a") {
 
-        window.location.href = "list_of_magazines.html";
         localStorage.setItem("isloged", JSON.stringify(1));
+        window.location.href = "list_of_magazines.html";
 
     } else {
         // alert("Informations d'identification incorrectes.");
