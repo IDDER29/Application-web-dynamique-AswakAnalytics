@@ -76,7 +76,9 @@ img{
   transition: 0.5s;
   z-index: var(--z-fixed);
 }
+
 #nav {
+
   height: 100%;
   display: flex;
   flex-direction: column;
