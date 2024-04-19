@@ -1,10 +1,5 @@
 function display_ecart_type() {
-<<<<<<< Updated upstream
-=======
-
     
->>>>>>> Stashed changes
-
     let caData_JSON = localStorage.getItem("caData");
     let caData = JSON.parse(caData_JSON) || [100, 150, 200, 250, 300];
 
