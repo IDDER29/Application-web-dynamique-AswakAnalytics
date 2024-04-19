@@ -15,7 +15,7 @@ function addMagazins() {
         date : date.value
     });
 
-    localStorage.setItem("nagazins", JSON.stringify(ajouterMagazins));
+    localStorage.setItem("magazins", JSON.stringify(ajouterMagazins));
 }
 
 ajouter.addEventListener("click", (e)=> {
