@@ -36,7 +36,6 @@ function addToTable() {
   // Cellule pour l'icône de modification
  // Créer la cellule pour les icônes d'édition et de suppression
 var actionCell = document.createElement('td');
-actionCell.className = 'action-cell';
 
 // Créer l'icône d'édition
 // Créez l'icône d'édition
@@ -160,25 +159,68 @@ function saveEditedData() {
 
 
 function updateLocalStorage() {
-  var tableRows = document.querySelectorAll('#tableBody tr');
-  var tableData = [];
-
-  tableRows.forEach(function(row) {
-    var cells = row.getElementsByTagName("td");
-    var rowData = {
-      name: cells[0].textContent,
-      effectif: cells[1].textContent,
-      surface: cells[2].textContent
-    };
-    tableData.push(rowData);
+    var tableRows = document.querySelectorAll('#tableBody tr');
+    var tableData = [];
+  
+    tableRows.forEach(function(row) {
+      var cells = row.getElementsByTagName("td");
+      var rowData = {
+        name: cells[0].textContent,
+        chiffreAffaire: cells[1].textContent,
+        effectif: cells[2].textContent,
+        surface: cells[3].textContent
+      };
+      tableData.push(rowData);
+    });
+  
+    localStorage.setItem('tableData', JSON.stringify(tableData));
+  }
+// Charger les données du local storage au chargement de la page
+window.addEventListener('load', function() {
+    var tableData = JSON.parse(localStorage.getItem('tableData')) || [];
+    var tableBody = document.getElementById('tableBody');
+  
+    tableData.forEach(function(data) {
+      var newRow = document.createElement('tr');
+      newRow.innerHTML = '<td>' + data.name + '</td><td>' + data.chiffreAffaire + '</td><td>' + data.effectif + '</td><td>' + data.surface + '</td>';
+      
+      // Ajouter l'icône d'édition et l'icône de suppression à chaque ligne
+      var actionCell = document.createElement('td');
+  
+      // Créer l'icône d'édition
+      var editIcon = document.createElement('i');
+      editIcon.className = 'fas fa-edit edit-icon';
+      editIcon.addEventListener("click", function() {
+          var row = this.parentNode.parentNode; 
+          openEditPopup(row);
+      });
+      actionCell.appendChild(editIcon);
+  
+      var iconSpacing = document.createElement('span');
+      iconSpacing.className = 'icon-spacing';
+      actionCell.appendChild(iconSpacing);
+  
+      // Créer l'icône de suppression
+      var deleteIcon = document.createElement('i');
+      deleteIcon.className = 'fas fa-trash-alt delete-icon';
+      deleteIcon.addEventListener("click", function() {
+          var confirmation = confirm("Êtes-vous sûr de vouloir supprimer cet élément ?");
+          if (confirmation) {
+            var row = deleteIcon.parentNode.parentNode; 
+            row.parentNode.removeChild(row); 
+            updateLocalStorage();
+          }
+      });
+      actionCell.appendChild(deleteIcon);
+  
+      newRow.appendChild(actionCell);
+      tableBody.appendChild(newRow);
+    });
   });
-
-  localStorage.setItem('tableData', JSON.stringify(tableData));
-}
+  
 
 
-
-
+console.log('tableData:', tableData);
 localStorage.setItem('tableData', JSON.stringify(tableData));
 
 window.addEventListener('load', function() {
