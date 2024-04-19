@@ -1,5 +1,4 @@
-function display_mediane(event) {
-    event.preventDefault();
+function display_mediane() {
 
     let caData_JSON = localStorage.getItem("caData");
     let caData = JSON.parse(caData_JSON);
@@ -19,6 +18,6 @@ function display_mediane(event) {
         document.getElementById("ca_mediane").innerHTML = mediane.toFixed(2) + " %"
     }
 }
-document.addEventListener("DOMContentLoaded", function () {
-    display_mediane(event);
+document.addEventListener("DOMContentLoaded", ()=> {
+    display_mediane();
 });

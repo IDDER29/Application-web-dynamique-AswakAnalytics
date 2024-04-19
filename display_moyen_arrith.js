@@ -1,5 +1,5 @@
-function display_moyen_arith(event) {
-    event.preventDefault();
+function display_moyen_arith() {
+    
 
     let caData_JSON = localStorage.getItem("caData");
     let caData = JSON.parse(caData_JSON);
@@ -13,8 +13,8 @@ function display_moyen_arith(event) {
         document.getElementById("ca_moyenne_arithm").innerHTML = moyen_arith.toFixed(2) + " DH"
     }
 }
-document.addEventListener("DOMContentLoaded", function () {
-    display_moyen_arith(event);
+document.addEventListener("DOMContentLoaded", ()=> {
+    display_moyen_arith();
 });
 
 // const caData = [100, 150, 200, 250, 300];

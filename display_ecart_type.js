@@ -1,6 +1,4 @@
-function display_ecart_type(event) {
-
-    event.preventDefault();
+function display_ecart_type() {
 
     let caData_JSON = localStorage.getItem("caData");
     let caData = JSON.parse(caData_JSON);
@@ -28,6 +26,6 @@ function display_ecart_type(event) {
 
 
 }
-document.addEventListener("DOMContentLoaded", function () {
-    display_ecart_type(event);
+document.addEventListener("DOMContentLoaded", ()=> {
+    display_ecart_type();
 });

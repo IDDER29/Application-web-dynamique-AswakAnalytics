@@ -1,5 +1,4 @@
-function display_mode(event) {
-    event.preventDefault();
+function display_mode() {
 
     let caData_JSON = localStorage.getItem("caData");
     let caData = JSON.parse(caData_JSON);
@@ -15,6 +14,6 @@ function display_mode(event) {
         document.getElementById("ca_mode").innerHTML = mode.toFixed(2) + " DH"
     }
 }
-document.addEventListener("DOMContentLoaded", function () {
-    display_mode(event);
+document.addEventListener("DOMContentLoaded", ()=> {
+    display_mode();
 });
