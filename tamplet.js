@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", ()=> {
+    
     const showNavbar = (toggleId, navId, bodyId, headerId) => {
         const toggle = document.getElementById(toggleId),
             nav = document.getElementById(navId),
@@ -8,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         // Validate that all variables exist
         if (toggle && nav && bodypd && headerpd) {
             toggle.addEventListener("click", () => {
+                console.log("tamplet.js it works");
                 // show navbar
                 nav.classList.toggle("show");
                 // change icon
@@ -32,4 +34,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
     }
     linkColor.forEach((l) => l.addEventListener("click", colorLink));
+
+    function logOut(){
+        localStorage.setItem("isloged", JSON.stringify(-1));
+        window.location.href = "index.html";
+    }
+
+    document.querySelector(".bx-log-out").addEventListener("click", ()=>{
+        logOut();
+        
+    })
+
 });
