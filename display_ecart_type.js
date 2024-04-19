@@ -1,7 +1,12 @@
 function display_ecart_type() {
+<<<<<<< Updated upstream
+=======
+
+    
+>>>>>>> Stashed changes
 
     let caData_JSON = localStorage.getItem("caData");
-    let caData = JSON.parse(caData_JSON);
+    let caData = JSON.parse(caData_JSON) || [100, 150, 200, 250, 300];
 
     let somme = 0;
     for (let i = 0; i < caData.length; i++) {
@@ -23,7 +28,6 @@ function display_ecart_type() {
     console.log("Moyenne:", moyenne);
     console.log("Écart-type:", ecartType);
     console.log("Coefficient de variation:", coefficientVariation, "%");
-
 
 }
 document.addEventListener("DOMContentLoaded", ()=> {

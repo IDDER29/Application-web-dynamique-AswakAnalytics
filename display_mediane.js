@@ -1,8 +1,12 @@
 function display_mediane() {
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
 
     let caData_JSON = localStorage.getItem("caData");
-    let caData = JSON.parse(caData_JSON);
-    let c;
+    let caData = JSON.parse(caData_JSON) || [100, 150, 200, 250, 300];
+    
 
     if (caData && caData.length > 0) {
         caData.sort((a, b) => a - b);
@@ -15,9 +19,14 @@ function display_mediane() {
         } else {
             mediane = caData[Math.floor(index / 2)];
         }
-        document.getElementById("ca_mediane").innerHTML = mediane.toFixed(2) + " %"
+        document.getElementById("ca_mediane").innerHTML = mediane.toFixed(2) + " %";
     }
 }
+<<<<<<< Updated upstream
 document.addEventListener("DOMContentLoaded", ()=> {
+=======
+
+document.addEventListener("DOMContentLoaded", () =>{
+>>>>>>> Stashed changes
     display_mediane();
 });
