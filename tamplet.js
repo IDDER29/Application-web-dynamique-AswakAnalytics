@@ -1,3 +1,7 @@
+let onlineOrNot = JSON.parse(localStorage.getItem("isloged"))|| -1;
+if(onlineOrNot != 1){
+    window.location.href = "index.html";
+}
 document.addEventListener("DOMContentLoaded", ()=> {
     
     const showNavbar = (toggleId, navId, bodyId, headerId) => {

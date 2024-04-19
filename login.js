@@ -1,3 +1,7 @@
+let onlineOrNot = JSON.parse(localStorage.getItem("isloged"))|| -1;
+if(onlineOrNot==1){
+    window.location.href = "list_of_magazines.html";
+}
 function loginUser(event) {
     event.preventDefault();
 
