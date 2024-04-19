@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", ()=> {
 
  
   
@@ -10,26 +10,31 @@ document.addEventListener("DOMContentLoaded", function (event) {
       name: "Sidi maarouf",
       city: "Casablanca",
       street: "sidi maarouf",
+      date:"2010"
     },
     {
       name: "Sidi maarouf",
       city: "Casablanca",
       street: "sidi maarouf",
+      date:"2010"
     },
     {
       name: "Sidi maarouf",
       city: "Casablanca",
       street: "sidi maarouf",
+      date:"2010"
     },
     {
       name: "Sidi maarouf",
       city: "Casablanca",
       street: "sidi maarouf",
+      date:"2010"
     },
     {
       name: "Sidi maarouf",
       city: "Casablanca",
       street: "sidi maarouf",
+      date:"2010"
     },
   ];
   
