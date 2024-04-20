@@ -50,7 +50,7 @@
                         <i class="bx bxs-store-alt nav_icon"></i>
                         <span class="nav_name">Magasins</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a href="./ajouter.html" class="nav_link">
                         <i class="bx bxs-add-to-queue nav_icon"></i>
                         <span class="nav_name">Ajouter Magasin</span>
                     </a>
@@ -144,15 +144,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         var xValues = ["Jan", "Fev", "Mar", "Avr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        // var yValues = [55, 49, 44, 24, 15, 49, 44, 24, 15, 49, 44, 24, 15];
+        let caData_JSON = [100, 150, 200, 250, 300];
+        let yValues = [100, 150, 200, 250, 300];
 
-        let tableData_JSON = localStorage.getItem("tableData");
-        let tableData = JSON.parse(tableData_JSON);
-        let chiffreAffaireData = [];
-        for (let i = 0; i < tableData.length; i++) {
-            chiffreAffaireData.push(parseFloat(tableData[i].chiffreAffaire));
-        }
-        
-        let yValues = chiffreAffaireData;
+        //   let yValues = JSON.parse(caData_JSON);
+
 
         new Chart("myChart", {
             type: "bar",
@@ -175,7 +172,7 @@
                     y: {
                         beginAtZero: true,
                         ticks: {
-                            stepSize: 10000
+                            stepSize: 100
                         }
                     }
                 }

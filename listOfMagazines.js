@@ -5,38 +5,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
   // Your code to run since DOM is loaded and ready
   let gridCardContiner = document.querySelector(".grid_container");
   
-  let stors = [
-    {
-      name: "Sidi maarouf",
-      city: "Casablanca",
-      street: "sidi maarouf",
-      date:"2010"
-    },
-    {
-      name: "Sidi maarouf",
-      city: "Casablanca",
-      street: "sidi maarouf",
-      date:"2010"
-    },
-    {
-      name: "Sidi maarouf",
-      city: "Casablanca",
-      street: "sidi maarouf",
-      date:"2010"
-    },
-    {
-      name: "Sidi maarouf",
-      city: "Casablanca",
-      street: "sidi maarouf",
-      date:"2010"
-    },
-    {
-      name: "Sidi maarouf",
-      city: "Casablanca",
-      street: "sidi maarouf",
-      date:"2010"
-    },
-  ];
+  let stors = JSON.parse(localStorage.getItem("magazins")) || [];
   
 
 
@@ -60,7 +29,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
               <i class="fa-solid fa-location-dot"></i>
               <span> ${stor.city}, </span><span class="fst-italic">${stor.street}</span>
             </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="./table.html" class="btn btn-primary">Show</a>
+           
           </div>
         </div>
       </div>
