@@ -33,4 +33,8 @@ function addMagazins() {
 ajouter.addEventListener("click", (e)=> {
     e.preventDefault();
     addMagazins();
+    nom.value = "";
+    ville.value = "";
+    street.value = "";
+    date.value = "";
 })
