@@ -8,12 +8,19 @@ let ajouterMagazins = JSON.parse(localStorage.getItem("magazins")) || [];
 
 //AJOUTER
 function addMagazins() {
-    ajouterMagazins.push({
-        name : nom.value,
-        city : ville.value,
-        street : street.value,
-        date : date.value
-    });
+    if (!nom.value || !ville.value || !street.value || !date.value)
+    {
+        alert("enter all inputs");
+    }
+    else
+    {
+        ajouterMagazins.push({
+            name : nom.value,
+            city : ville.value,
+            street : street.value,
+            date : date.value
+        });
+    }  
 
     localStorage.setItem("magazins", JSON.stringify(ajouterMagazins));
 }
@@ -21,6 +28,4 @@ function addMagazins() {
 ajouter.addEventListener("click", (e)=> {
     e.preventDefault();
     addMagazins();
-    window.location.reload();
-    console.log(date.value, ville.value, nom.value);
 })
