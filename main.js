@@ -108,6 +108,7 @@ function addToTable() {
   document.getElementById("tableBody").appendChild(newRow);
 
   var data = {
+    stor:stors[id].name,
     name: name,
     chiffreAffaire: chiffreAffaire,
     effectif: effectif,
@@ -204,9 +205,11 @@ function updateLocalStorage() {
 // Charger les données du local storage au chargement de la page
 window.addEventListener("load", function () {
   var tableData = JSON.parse(localStorage.getItem("tableData")) || [];
+  let cardData = tableData.filter(data => data.stor == stors[id].name);
+
   var tableBody = document.getElementById("tableBody");
   updateTitle();
-  tableData.forEach(function (data) {
+  cardData.forEach(function (data) {
     var newRow = document.createElement("tr");
     newRow.innerHTML =
       "<td>" +
@@ -260,10 +263,11 @@ localStorage.setItem("tableData", JSON.stringify(tableData));
 
 window.addEventListener("load", function () {
   var tableData = JSON.parse(localStorage.getItem("tableData")) || [];
-  
+  let cardData = tableData.filter(data => data.stor == stors[id].name);
+  console.log("card Data" + cardData);
   var tableBody = document.getElementById("tableBody");
 
-  tableData.forEach(function (data) {
+  cardData.forEach(function (data) {
     var newRow = document.createElement("tr");
     newRow.innerHTML =
       "<td>" +
