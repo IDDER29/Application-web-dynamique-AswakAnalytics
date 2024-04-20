@@ -211,6 +211,7 @@ window.addEventListener("load", function () {
   updateTitle();
   cardData.forEach(data => {
     var newRow = document.createElement("tr");
+    console.log("hi how are you ");
     newRow.innerHTML =
       "<td>" +
       data.name +
@@ -257,6 +258,7 @@ window.addEventListener("load", function () {
     newRow.appendChild(actionCell);
     tableBody.appendChild(newRow);
   });
+  console.log("hi how are you ");
 });
 
 // console.log("tableData:", tableData);
@@ -295,7 +297,7 @@ function populateStoreName() {
   selectElement.innerHTML = "";
 
   // Parcourir tous les magasins et ajouter chaque nom au menu déroulant
-  magazins.forEach(function (magasin) {
+  magazins.forEach(magasin => {
     var option = document.createElement("option");
     option.value = magasin.name;
     option.textContent = magasin.name;
