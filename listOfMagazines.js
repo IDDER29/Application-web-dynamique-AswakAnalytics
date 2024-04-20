@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
       if (radio.checked) {
         radio.closest("label").classList.add("active");
         if(radio.value =="vertical" ){
+      
           gridCardContiner.classList.add("row-cols-md-4");
           cardContent.forEach((content) => content.classList.remove("col-md-8"));
           gridCardContiner.classList.remove("row-cols-md-2");
