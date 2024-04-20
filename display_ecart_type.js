@@ -1,19 +1,24 @@
 function display_ecart_type() {
     
-    let caData_JSON = localStorage.getItem("caData");
-    let caData = JSON.parse(caData_JSON) || [100, 150, 200, 250, 300];
+    let tableData_JSON = localStorage.getItem("tableData");
+    let tableData = JSON.parse(tableData_JSON);
 
-    let somme = 0;
-    for (let i = 0; i < caData.length; i++) {
-        somme += caData[i];
+    let chiffreAffaireData = [];
+
+    for (let i = 0; i < tableData.length; i++) {
+        chiffreAffaireData.push(parseFloat(tableData[i].chiffreAffaire));
     }
-    let moyenne = somme / caData.length;
+    let somme = 0;
+    for (let i = 0; i < chiffreAffaireData.length; i++) {
+        somme += chiffreAffaireData[i];
+    }
+    let moyenne = somme / chiffreAffaireData.length;
 
     let variance = 0;
-    for (let i = 0; i < caData.length; i++) {
-        variance += Math.pow(caData[i] - moyenne, 2);
+    for (let i = 0; i < chiffreAffaireData.length; i++) {
+        variance += Math.pow(chiffreAffaireData[i] - moyenne, 2);
     }
-    variance /= caData.length;
+    variance /= chiffreAffaireData.length;
     let ecartType = Math.sqrt(variance);
 
     let coefficientVariation = (ecartType / moyenne) * 100; // mafhemtch

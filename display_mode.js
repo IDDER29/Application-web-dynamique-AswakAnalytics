@@ -1,14 +1,19 @@
 function display_mode() {
 
-  let caData_JSON = localStorage.getItem("caData");
-  let caData = JSON.parse(caData_JSON) || [100, 150, 200, 250, 300];
+  let tableData_JSON = localStorage.getItem("tableData");
+    let tableData = JSON.parse(tableData_JSON);
 
+    let chiffreAffaireData = [];
 
-  if (caData && caData.length > 0) {
-    let mode = caData[0];
-    for (let i = 1; i < caData.length; i++) {
-      if (caData[i] > mode) {
-        mode = caData[i];
+    for (let i = 0; i < tableData.length; i++) {
+        chiffreAffaireData.push(parseFloat(tableData[i].chiffreAffaire));
+    }
+
+  if (chiffreAffaireData && chiffreAffaireData.length > 0) {
+    let mode = chiffreAffaireData[0];
+    for (let i = 1; i < chiffreAffaireData.length; i++) {
+      if (chiffreAffaireData[i] > mode) {
+        mode = chiffreAffaireData[i];
       }
     }
     document.getElementById("ca_mode").innerHTML = mode.toFixed(2) + " DH";

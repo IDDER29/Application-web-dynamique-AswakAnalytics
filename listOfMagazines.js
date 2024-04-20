@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
               <i class="fa-solid fa-location-dot"></i>
               <span> ${stor.city}, </span><span class="fst-italic">${stor.street}</span>
             </p>
-            <a href="./table.html" class="btn btn-primary">Show</a>
+            <a href="./table.html" class="btn btn-primary" data-id="${stors.indexOf(stor)}">Show</a>
            
           </div>
         </div>
@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
       if (radio.checked) {
         radio.closest("label").classList.add("active");
         if(radio.value =="vertical" ){
+      
           gridCardContiner.classList.add("row-cols-md-4");
           cardContent.forEach((content) => content.classList.remove("col-md-8"));
           gridCardContiner.classList.remove("row-cols-md-2");
