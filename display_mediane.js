@@ -1,20 +1,25 @@
 function display_mediane() {
-    let caData_JSON = localStorage.getItem("caData");
-    let caData = JSON.parse(caData_JSON) || [100, 150, 200, 250, 300];
-    
+    let tableData_JSON = localStorage.getItem("tableData");
+    let tableData = JSON.parse(tableData_JSON);
 
-    if (caData && caData.length > 0) {
-        caData.sort((a, b) => a - b);
+    let chiffreAffaireData = [];
 
-        let index = caData.length;
+    for (let i = 0; i < tableData.length; i++) {
+        chiffreAffaireData.push(parseFloat(tableData[i].chiffreAffaire));
+    }
+
+    if (chiffreAffaireData && chiffreAffaireData.length > 0) {
+        chiffreAffaireData.sort((a, b) => a - b);
+
+        let index = chiffreAffaireData.length;
         let mediane;
 
         if (index % 2 === 0) {
-            mediane = (caData[index / 2] + caData[(index / 2) - 1]) / 2;
+            mediane = (chiffreAffaireData[index / 2] + chiffreAffaireData[(index / 2) - 1]) / 2;
         } else {
-            mediane = caData[Math.floor(index / 2)];
+            mediane = chiffreAffaireData[Math.floor(index / 2)];
         }
-        document.getElementById("ca_mediane").innerHTML = mediane.toFixed(2) + " %";
+        document.getElementById("ca_mediane").innerHTML = mediane.toFixed(2) + " DH";
     }
 }
 
