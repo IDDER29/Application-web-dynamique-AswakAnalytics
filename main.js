@@ -10,11 +10,26 @@ function closePopup() {
   let popup = document.getElementById("editPopup");
   popup.style.display = "none";
 }
+function validateInput() {
+    var chiffreAffaire = document.getElementById("CA").value;
+    var effectif = document.getElementById('effectif').value;
+    var surface = document.getElementById('surface').value;
 
+    // Vérifie si les champs sont vides ou non numériques
+    if (isNaN(chiffreAffaire) || isNaN(effectif) || isNaN(surface) || chiffreAffaire === "" || effectif === "" || surface === "") {
+        alert("Veuillez entrer des valeurs numériques dans tous les champs.");
+        return false; // Empêche l'ajout au tableau si les données ne sont pas valides
+    }
+    return true; // Les données sont valides
+}
 
 var rowCount = 1;
 
 function addToTable() {
+
+    if (!validateInput()) {
+        return; // Sort de la fonction si les données ne sont pas valides
+    }
   var name = document.getElementById('editName').value;
   var chiffreAffaire = document.getElementById("CA").value;
   var effectif = document.getElementById('effectif').value;
@@ -101,8 +116,8 @@ actionCell.appendChild(deleteIcon);
 var currentRow;
 
 function openEditPopup(row) {
-    currentRow = row;
   
+    currentRow = row;
     var tableRows = document.querySelectorAll('tr');
     tableRows.forEach(function(tableRow) {
       tableRow.classList.remove('selected');
@@ -125,6 +140,7 @@ function openEditPopup(row) {
   
 
 function closeEditPopup() {
+    
   var modPopup = document.getElementById("modPopup");
   modPopup.style.display = "none";
 }
@@ -140,10 +156,16 @@ function attachSaveEditEvent() {
 document.addEventListener("DOMContentLoaded", attachSaveEditEvent);
 
 function saveEditedData() {
-  var name = document.getElementById("modCa").value;  
+    var name = document.getElementById("modCa").value;
+    var effectif = document.getElementById("modEffectif").value;
+    var surface = document.getElementById("modSurface").value;
 
-  var effectif = document.getElementById("modEffectif").value;
-  var surface = document.getElementById("modSurface").value;
+    // Valider les entrées avant de sauvegarder les modifications
+    if (isNaN(effectif) || isNaN(surface) || effectif === "" || surface === "") {
+        alert("Veuillez entrer des valeurs numériques dans les champs 'Effectifs' et 'Surface'.");
+        return; // Sort de la fonction si les données ne sont pas valides
+    }
+
 
   var cells = currentRow.getElementsByTagName("td");
 
@@ -159,6 +181,7 @@ function saveEditedData() {
 
 
 function updateLocalStorage() {
+    
     var tableRows = document.querySelectorAll('#tableBody tr');
     var tableData = [];
   
@@ -238,4 +261,34 @@ var addButton = document.getElementById('addButton');
 addButton.addEventListener('click', function() {
   addToTable();
 });
-    
+function populateStoreName() {
+    // Récupérer les magasins du stockage local
+    let magazins = JSON.parse(localStorage.getItem("magazins")) || [];
+
+    // Sélectionner l'élément du menu déroulant
+    var selectElement = document.getElementById('editCategory');
+    selectElement.innerHTML = ''; 
+
+    // Parcourir tous les magasins et ajouter chaque nom au menu déroulant
+    magazins.forEach(function(magasin) {
+        var option = document.createElement('option');
+        option.value = magasin.name;
+        option.textContent = magasin.name;
+        selectElement.appendChild(option);
+    });
+}
+// Fonction pour mettre à jour le titre en fonction du magasin sélectionné
+function updateTitle() {
+    var selectElement = document.getElementById('editCategory');
+    var selectedStoreName = selectElement.value;
+    var titleElement = document.getElementById('magasin-title');
+
+    titleElement.textContent = selectedStoreName;
+}
+
+// Ajouter un écouteur d'événements de changement au sélecteur
+var selectElement = document.getElementById('editCategory');
+selectElement.addEventListener('change', updateTitle);
+
+// Appeler la fonction pour mettre à jour le titre au chargement de la page
+updateTitle();
