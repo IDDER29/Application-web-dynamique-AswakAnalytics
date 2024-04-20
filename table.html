@@ -94,18 +94,15 @@
           <h3>Ajout de Donnée</h3>
           <form id="editForm">
               <label for="editCategory">Année civile</label><br>
-              <select id="editName" name="editCategory">
-                  <option value="2024" id="editName">2024</option>
-                  <option value="2023" id="editName">2023</option>
-                  <option value="2022" id="editName">2022</option>
-                  <option value="2021" id="editName">2021</option>
-                  <option value="2020" id="editName">2020</option>
-                  <option value="2019" id="editName">2019</option>         
+              <select id="year" name="editCategory">
+                  <option value="2024" >2024</option>
+                  <option value="2023" >2023</option>
+                  <option value="2022" >2022</option>
+                  <option value="2021" >2021</option>
+                  <option value="2020" >2020</option>
+                  <option value="2019" >2019</option>         
               </select><br>
-              <label for="editCategory">Nom du Magasin</label><br>
-              <select id="editCategory" name="editCategory">
-                  <option value="Magasin" id="magasin-title">Sidi maarouf-Casablanca</option>
-              </select><br>   
+             <br>   
               <label for="CA">Chiffres d'affaire (en dhs)</label><br>
               <input type="text" id="CA" name="CA"><br>
               <label for="effectif">Effectifs</label><br>
@@ -126,7 +123,7 @@
            <input type="number" id="modEffectif" name="editEffectif"><br>
            <label for="surface">Surface (m²)</label><br>
            <input type="number" id="modSurface" name="surface"><br><br>
-           <button id="saveEdit"onclick="saveEditedData()">Enregistrer</button>
+           <button id="saveEdit">Enregistrer</button>
        </div>
   </div>
 
