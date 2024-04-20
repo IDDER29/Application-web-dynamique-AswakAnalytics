@@ -1,5 +1,5 @@
 function graph() {
-    var xValues = ["Jan", "Fev", "Mar", "Avr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    // var xValues = ["Jan", "Fev", "Mar", "Avr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let tableData_JSON = localStorage.getItem("tableData");
     let tableData = JSON.parse(tableData_JSON);
 
@@ -8,17 +8,23 @@ function graph() {
 
 
     let chiffreAffaireData = [];
+    let namesData = [];
 
     for (let i = 0; i < tableData.length; i++) {
         if (tableData[i].name === selectedYear) {
             chiffreAffaireData.push(parseFloat(tableData[i].chiffreAffaire));
+            namesData.push(String(tableData[i].stor));
         }
     }
     let yValues;
+    let xValues;
 
-    if(chiffreAffaireData){
-         yValues = chiffreAffaireData;
+    if(namesData){
+         xValues = namesData;
     }
+    if(chiffreAffaireData){
+        yValues = chiffreAffaireData;
+   }
 
     if (window.myChart instanceof Chart) {
         window.myChart.destroy();
