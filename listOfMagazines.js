@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
               <i class="fa-solid fa-location-dot"></i>
               <span> ${stor.city}, </span><span class="fst-italic">${stor.street}</span>
             </p>
-            <a href="./table.html" class="btn btn-primary">Show</a>
+            <a href="./table.html" class="btn btn-primary" data-id="${stors.indexOf(stor)}">Show</a>
            
           </div>
         </div>
