@@ -15,6 +15,8 @@ function addMagazins() {
         const nomMagazine = ajouterMagazins.find(magazine => magazine.name === nom.value);
         if (nomMagazine) {
             alert(nomMagazine.name + " already exists");
+        } else if (date.value < 2000 || date.value > 2024) {
+            alert("years is between 2000 and 2024")
         } else {
             // Add new magazine entry
             ajouterMagazins.push({
