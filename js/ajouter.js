@@ -8,7 +8,7 @@ let ajouterMagazins = JSON.parse(localStorage.getItem("magazins")) || [];
 
 //AJOUTER
 function addMagazins() {
-    if (!nom.value || !city.value || !street.value || date.value)
+    if (!nom.value || !ville.value || !street.value || !date.value)
     {
         alert("enter all inputs");
     }
@@ -20,7 +20,7 @@ function addMagazins() {
             street : street.value,
             date : date.value
         });
-    }   
+    }  
 
     localStorage.setItem("magazins", JSON.stringify(ajouterMagazins));
 }
