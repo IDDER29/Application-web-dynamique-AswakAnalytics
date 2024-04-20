@@ -19,6 +19,7 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet" />
   <link rel="stylesheet" href="./listOfMagazines.css" />
+  <link rel="stylesheet" href="./styles.css">
 
   <title>Magazines</title>
 </head>
@@ -46,11 +47,11 @@
             <!-- <i class="bx bx-grid-alt nav_icon"></i> -->
             <span class="nav_name">Dashboard</span>
           </a>
-          <a href="./list_Of_Magazines.html" class="nav_link ">
+          <a href="./list_Of_Magazines.html" class="nav_link active">
             <i class="bx bxs-store-alt nav_icon"></i>
             <span class="nav_name">Magasins</span>
           </a>
-          <a href="./ajouter.html" class="nav_link active">
+          <a href="./ajouter.html" class="nav_link ">
             <i class="bx bxs-add-to-queue nav_icon"></i>
             <span class="nav_name">Ajouter Magasin</span>
           </a>
@@ -65,75 +66,68 @@
 
 
   <!--Container Main start-->
-
-
-
-
   <div class="height-100 bg-light">
     <h4>Magasin :</h4>
     <h4><small>Sidi maarouf-Casablanca</small></h4><br>
     <div class="col-md-6 mx-auto">
-
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Année</th>
-              <th>CA</th>
-              <th>Effectifs</th>
-              <th>Surface</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-          </tbody>
-        </table>
-        <button id="add-button" onclick="openPopup()">Ajouter</button>
-      </div>
-    </div>
-
-    <div id="editPopup" class="popup">
-      <div class="popup-content">
-        <span class="close" onclick="closePopup()">&times;</span>
-        <h3>Ajout de Donnée</h3>
-        <form id="editForm">
-          <label for="editCategory">Année civile</label><br>
-          <select id="editName" name="editCategory">
-            <option value="2024" id="editName">2024</option>
-            <option value="2023" id="editName">2023</option>
-            <option value="2022" id="editName">2022</option>
-            <option value="2021" id="editName">2021</option>
-            <option value="2020" id="editName">2020</option>
-            <option value="2019" id="editName">2019</option>
-          </select><br>
-          <label for="editCategory">Nom du Magasin</label><br>
-          <select id="editCategory" name="editCategory">
-            <option value="Magasin">Sidi maarouf-Casablanca</option>
-          </select><br>
-          <label for="CA">Chiffres d'affaire (en dhs)</label><br>
-          <input type="text" id="CA" name="CA"><br>
-          <label for="effectif">Effectifs</label><br>
-          <input type="text" id="effectif" name="effectif"><br>
-          <label for="surface">Surface (m²)</label><br>
-          <input type="text" id="surface" name="surface"><br><br>
-          <button type="button" id="addButton" onclick="addToTable()">Ajouter</button>
-        </form>
-      </div>
-    </div>
-    <div id="modPopup" class="popup">
-      <div class="popup-content">
-        <span class="close" onclick="closeEditPopup()">&times;</span>
-        <h3>Modifier les données</h3>
-        <label for="editCA">Chiffres d'affaire (en dhs)</label><br>
-        <input type="text" id="modCa" name="editCA"><br>
-        <label for="editEffectif">Effectifs</label><br>
-        <input type="text" id="modEffectif" name="editEffectif"><br>
-        <label for="surface">Surface (m²)</label><br>
-        <input type="text" id="modSurface" name="surface"><br><br>
-        <button id="saveEdit" onclick="saveEditedData()">Enregistrer</button>
-      </div>
-    </div>
-
+      
+          <div class="table-responsive">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>Année</th>
+                      <th>CA</th>
+                      <th>Effectifs</th>
+                      <th >Surface</th>
+                  </tr>
+              </thead>
+            <tbody id="tableBody">
+      </tbody>
+          </table>
+          <button id="add-button" onclick="openPopup()">Ajouter</button>
+          </div>
   </div>
+
+  <div id="editPopup" class="popup">
+      <div class="popup-content">
+          <span class="close" onclick="closePopup()">&times;</span>
+          <h3>Ajout de Donnée</h3>
+          <form id="editForm">
+              <label for="editCategory">Année civile</label><br>
+              <select id="editName" name="editCategory">
+                  <option value="2024" id="editName">2024</option>
+                  <option value="2023" id="editName">2023</option>
+                  <option value="2022" id="editName">2022</option>
+                  <option value="2021" id="editName">2021</option>
+                  <option value="2020" id="editName">2020</option>
+                  <option value="2019" id="editName">2019</option>         
+              </select><br>
+              <label for="editCategory">Nom du Magasin</label><br>
+              <select id="editCategory" name="editCategory">
+                  <option value="Magasin">Sidi maarouf-Casablanca</option>
+              </select><br>
+              <label for="CA">Chiffres d'affaire (en dhs)</label><br>
+              <input type="text" id="CA" name="CA"><br>
+              <label for="effectif">Effectifs</label><br>
+              <input type="text" id="effectif" name="effectif"><br>
+              <label for="surface">Surface (m²)</label><br>
+              <input type="text" id="surface" name="surface"><br><br>
+              <button type="button" id="addButton" onclick="addToTable()">Ajouter</button>
+          </form>
+      </div>  
+  </div>
+  <div id="modPopup" class="popup">
+      <div class="popup-content">
+           <span class="close" onclick="closeEditPopup()">&times;</span>
+           <h3>Modifier les données</h3>
+           <label for="editCA">Chiffres d'affaire (en dhs)</label><br>
+           <input type="text" id="modCa" name="editCA"><br>
+           <label for="editEffectif">Effectifs</label><br>
+           <input type="text" id="modEffectif" name="editEffectif"><br>
+           <label for="surface">Surface (m²)</label><br>
+           <input type="text" id="modSurface" name="surface"><br><br>
+           <button id="saveEdit"onclick="saveEditedData()">Enregistrer</button>
+       </div>
   </div>
 
   <!--Container Main end-->

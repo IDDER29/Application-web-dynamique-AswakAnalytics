@@ -29,7 +29,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
               <i class="fa-solid fa-location-dot"></i>
               <span> ${stor.city}, </span><span class="fst-italic">${stor.street}</span>
             </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="./table.html" class="btn btn-primary">Show</a>
+           
           </div>
         </div>
       </div>
