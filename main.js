@@ -260,6 +260,7 @@ localStorage.setItem("tableData", JSON.stringify(tableData));
 
 window.addEventListener("load", function () {
   var tableData = JSON.parse(localStorage.getItem("tableData")) || [];
+  
   var tableBody = document.getElementById("tableBody");
 
   tableData.forEach(function (data) {
