@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
               <i class="fa-solid fa-location-dot"></i>
               <span> ${stor.city}, </span><span class="fst-italic">${stor.street}</span>
             </p>
-            <a href="./table.html" class="btn btn-primary" data-id="${stors.indexOf(stor)}">Show</a>
+            <a href="./table.html" class="btn btn-primary" id="btn_show_data" data-id="${stors.indexOf(stor)}">Show</a>
            
           </div>
         </div>
@@ -101,6 +101,13 @@ document.addEventListener("DOMContentLoaded", ()=> {
     radio.addEventListener("change", findSelected);
   });
   findSelected();
-  
+
+  gridCardContiner.addEventListener("click", (e) => {
+    if (e.target.id === "btn_show_data") {
+       let id = e.target.dataset.id;
+       // Assuming you want to store the id in localStorage
+       localStorage.setItem('selectedId', id);
+    }
+   });
   // End the functionality of  change the sutation of the card uppers
 });
