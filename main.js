@@ -209,7 +209,7 @@ window.addEventListener("load", function () {
 
   var tableBody = document.getElementById("tableBody");
   updateTitle();
-  cardData.forEach(function (data) {
+  cardData.forEach(data => {
     var newRow = document.createElement("tr");
     newRow.innerHTML =
       "<td>" +
@@ -221,7 +221,7 @@ window.addEventListener("load", function () {
       "</td><td>" +
       data.surface +
       "</td>";
-
+      console.log("repeat");
     // Ajouter l'icône d'édition et l'icône de suppression à chaque ligne
     var actionCell = document.createElement("td");
 
@@ -232,6 +232,7 @@ window.addEventListener("load", function () {
       var row = this.parentNode.parentNode;
       openEditPopup(row);
     });
+   
     actionCell.appendChild(editIcon);
 
     var iconSpacing = document.createElement("span");
@@ -258,28 +259,28 @@ window.addEventListener("load", function () {
   });
 });
 
-console.log("tableData:", tableData);
-localStorage.setItem("tableData", JSON.stringify(tableData));
+// console.log("tableData:", tableData);
+// localStorage.setItem("tableData", JSON.stringify(tableData));
 
-window.addEventListener("load", function () {
-  var tableData = JSON.parse(localStorage.getItem("tableData")) || [];
-  let cardData = tableData.filter(data => data.stor == stors[id].name);
-  console.log("card Data" + cardData);
-  var tableBody = document.getElementById("tableBody");
+// window.addEventListener("load", function () {
+//   var tableData = JSON.parse(localStorage.getItem("tableData")) || [];
+//   let cardData = tableData.filter(data => data.stor == stors[id].name);
+//   console.log("card Data" + cardData);
+//   var tableBody = document.getElementById("tableBody");
 
-  cardData.forEach(function (data) {
-    var newRow = document.createElement("tr");
-    newRow.innerHTML =
-      "<td>" +
-      data.name +
-      "</td><td>" +
-      data.effectif +
-      "</td><td>" +
-      data.surface +
-      "</td>";
-    tableBody.appendChild(newRow);
-  });
-});
+//   cardData.forEach(function (data) {
+//     var newRow = document.createElement("tr");
+//     newRow.innerHTML =
+//       "<td>" +
+//       data.name +
+//       "</td><td>" +
+//       data.effectif +
+//       "</td><td>" +
+//       data.surface +
+//       "</td>";
+//     tableBody.appendChild(newRow);
+//   });
+// });
 
 var addButton = document.getElementById("addButton");
 addButton.addEventListener("click", function () {
