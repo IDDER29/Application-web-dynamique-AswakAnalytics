@@ -68,7 +68,7 @@
   <!--Container Main start-->
   <div class="height-100 bg-light">
     <h4>Magasin :</h4>
-    <h4><small>Sidi maarouf-Casablanca</small></h4><br>
+    <h4><small id="magasin-title">Sidi maarouf-Casablanca</small></h4><br>
     <div class="col-md-6 mx-auto">
       
           <div class="table-responsive">
@@ -104,8 +104,8 @@
               </select><br>
               <label for="editCategory">Nom du Magasin</label><br>
               <select id="editCategory" name="editCategory">
-                  <option value="Magasin">Sidi maarouf-Casablanca</option>
-              </select><br>
+                  <option value="Magasin" id="magasin-title">Sidi maarouf-Casablanca</option>
+              </select><br>   
               <label for="CA">Chiffres d'affaire (en dhs)</label><br>
               <input type="text" id="CA" name="CA"><br>
               <label for="effectif">Effectifs</label><br>
@@ -121,11 +121,11 @@
            <span class="close" onclick="closeEditPopup()">&times;</span>
            <h3>Modifier les données</h3>
            <label for="editCA">Chiffres d'affaire (en dhs)</label><br>
-           <input type="text" id="modCa" name="editCA"><br>
+           <input type="number" id="modCa" name="editCA"><br>
            <label for="editEffectif">Effectifs</label><br>
-           <input type="text" id="modEffectif" name="editEffectif"><br>
+           <input type="number" id="modEffectif" name="editEffectif"><br>
            <label for="surface">Surface (m²)</label><br>
-           <input type="text" id="modSurface" name="surface"><br><br>
+           <input type="number" id="modSurface" name="surface"><br><br>
            <button id="saveEdit"onclick="saveEditedData()">Enregistrer</button>
        </div>
   </div>
