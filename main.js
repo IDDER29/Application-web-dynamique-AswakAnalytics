@@ -15,10 +15,39 @@ function closePopup() {
   let popup = document.getElementById("editPopup");
   popup.style.display = "none";
 }
-function validateInput() {
+function validateInputAdd() {
+  var year = document.getElementById("year").value;
   var chiffreAffaire = document.getElementById("CA").value;
   var effectif = document.getElementById("effectif").value;
   var surface = document.getElementById("surface").value;
+  var tableData = JSON.parse(localStorage.getItem("tableData")) || [];
+
+  let cardData = tableData.filter(data => data.stor == stors[id].name);
+  let checkYearExists = cardData.some(data => data.name == year);
+
+  // Vérifie si l'année existe déjà dans les données
+  if (checkYearExists) {
+    alert("L'année existe déjà dans les données. Veuillez choisir une autre année.");
+    return false; // Empêche l'ajout au tableau si l'année existe déjà
+  }
+  // Vérifie si les champs sont vides ou non numériques
+  if (
+    isNaN(chiffreAffaire) ||
+    isNaN(effectif) ||
+    isNaN(surface) ||
+    chiffreAffaire === "" ||
+    effectif === "" ||
+    surface === ""
+  ) {
+    alert("Veuillez entrer des valeurs numériques dans tous les champs.");
+    return false; // Empêche l'ajout au tableau si les données ne sont pas valides
+  }
+  return true; // Les données sont valides
+}
+function validateInputMod() {
+  var chiffreAffaire = document.getElementById("modCa").value;
+  var effectif = document.getElementById("modEffectif").value;
+  var surface = document.getElementById("modSurface").value;
 
   // Vérifie si les champs sont vides ou non numériques
   if (
@@ -34,14 +63,13 @@ function validateInput() {
   }
   return true; // Les données sont valides
 }
-
 var rowCount = 1;
 
 function addToTable() {
-  if (!validateInput()) {
+  if (!validateInputAdd()) {
     return; // Sort de la fonction si les données ne sont pas valides
   }
-  var name = document.getElementById("editName").value;
+  var name = document.getElementById("year").value;
   var chiffreAffaire = document.getElementById("CA").value;
   var effectif = document.getElementById("effectif").value;
   var surface = document.getElementById("surface").value;
@@ -153,7 +181,7 @@ function closeEditPopup() {
 
 function attachSaveEditEvent() {
   document.getElementById("saveEdit").addEventListener("click", function () {
-    console.log("Bouton Enregistrer cliqué");
+    // console.log("Bouton Enregistrer cliqué");
     saveEditedData();
   });
 }
@@ -162,26 +190,21 @@ function attachSaveEditEvent() {
 document.addEventListener("DOMContentLoaded", attachSaveEditEvent);
 
 function saveEditedData() {
+  if (!validateInputMod()) {
+    return; // Sort de la fonction si les données ne sont pas valides
+  }
   var name = document.getElementById("modCa").value;
   var effectif = document.getElementById("modEffectif").value;
   var surface = document.getElementById("modSurface").value;
-
-  // Valider les entrées avant de sauvegarder les modifications
-  if (isNaN(effectif) || isNaN(surface) || effectif === "" || surface === "") {
-    alert(
-      "Veuillez entrer des valeurs numériques dans les champs 'Effectifs' et 'Surface'."
-    );
-    return; // Sort de la fonction si les données ne sont pas valides
-  }
 
   var cells = currentRow.getElementsByTagName("td");
 
   cells[1].textContent = name;
   cells[2].textContent = effectif;
   cells[3].textContent = surface;
-
+console.log("hi how are you ");
   closeEditPopup();
-
+  // validateInput();
   updateLocalStorage();
 }
 
@@ -192,6 +215,7 @@ function updateLocalStorage() {
   tableRows.forEach(function (row) {
     var cells = row.getElementsByTagName("td");
     var rowData = {
+      stor:stors[id].name,
       name: cells[0].textContent,
       chiffreAffaire: cells[1].textContent,
       effectif: cells[2].textContent,
@@ -288,34 +312,34 @@ var addButton = document.getElementById("addButton");
 addButton.addEventListener("click", function () {
   addToTable();
 });
-function populateStoreName() {
-  // Récupérer les magasins du stockage local
-  let magazins = JSON.parse(localStorage.getItem("magazins")) || [];
+// function populateStoreName() {
+//   // Récupérer les magasins du stockage local
+//   let magazins = JSON.parse(localStorage.getItem("magazins")) || [];
 
-  // Sélectionner l'élément du menu déroulant
-  var selectElement = document.getElementById("editCategory");
-  selectElement.innerHTML = "";
+//   // Sélectionner l'élément du menu déroulant
+//   var selectElement = document.getElementById("editCategory");
+//   selectElement.innerHTML = "";
 
-  // Parcourir tous les magasins et ajouter chaque nom au menu déroulant
-  magazins.forEach(magasin => {
-    var option = document.createElement("option");
-    option.value = magasin.name;
-    option.textContent = magasin.name;
-    selectElement.appendChild(option);
-  });
-}
-// Fonction pour mettre à jour le titre en fonction du magasin sélectionné
+//   // Parcourir tous les magasins et ajouter chaque nom au menu déroulant
+//   magazins.forEach(magasin => {
+//     var option = document.createElement("option");
+//     option.value = magasin.name;
+//     option.textContent = magasin.name;
+//     selectElement.appendChild(option);
+//   });
+// }
+// // Fonction pour mettre à jour le titre en fonction du magasin sélectionné
 function updateTitle() {
-  var selectElement = document.getElementById("editCategory");
-  var selectedStoreName = selectElement.value;
+  // var selectElement = document.getElementById("editCategory");
+  // var selectedStoreName = selectElement.value;
   var titleElement = document.getElementById("magasin-title");
 
   titleElement.textContent = stors[id].name ;
 }
 
 // Ajouter un écouteur d'événements de changement au sélecteur
-var selectElement = document.getElementById("editCategory");
-selectElement.addEventListener("change", updateTitle);
+// var selectElement = document.getElementById("editCategory");
+// selectElement.addEventListener("change", updateTitle);
 
 // Appeler la fonction pour mettre à jour le titre au chargement de la page
 
