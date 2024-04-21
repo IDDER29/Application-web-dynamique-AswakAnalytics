@@ -136,7 +136,7 @@ function addToTable() {
   document.getElementById("tableBody").appendChild(newRow);
 
   var data = {
-    stor:stors[id].name,
+    stor: stors[id].name,
     name: name,
     chiffreAffaire: chiffreAffaire,
     effectif: effectif,
@@ -202,20 +202,26 @@ function saveEditedData() {
   cells[1].textContent = name;
   cells[2].textContent = effectif;
   cells[3].textContent = surface;
-console.log("hi how are you ");
+  console.log("hi how are you ");
   closeEditPopup();
   // validateInput();
   updateLocalStorage();
 }
 
 function updateLocalStorage() {
+  
   var tableRows = document.querySelectorAll("#tableBody tr");
+  var tableDataLocalStorage = JSON.parse(localStorage.getItem("tableData")) || [];
   var tableData = [];
+  let index = 0;
+
+  console.log('before passing the new values');
+  console.log(tableDataLocalStorage[id]);
 
   tableRows.forEach(function (row) {
     var cells = row.getElementsByTagName("td");
     var rowData = {
-      stor:stors[id].name,
+      stor: stors[id].name, // Assuming 'stor' is defined elsewhere in your code
       name: cells[0].textContent,
       chiffreAffaire: cells[1].textContent,
       effectif: cells[2].textContent,
@@ -223,8 +229,24 @@ function updateLocalStorage() {
     };
     tableData.push(rowData);
   });
+console.log("start the for each loop");
+   
+tableDataLocalStorage.forEach((data, i) => {
+  console.log(stors[id].name);
+  console.log(data.stor);
+  console.log(data.stor == stors[id].name);
+  if(data.stor == stors[id].name){
+     tableDataLocalStorage[i] = tableData[index];
+     index++;
+  }
+ });
+ 
+   
+  console.log("after passing the values edit");
+ 
+  console.log(tableDataLocalStorage);
 
-  localStorage.setItem("tableData", JSON.stringify(tableData));
+  localStorage.setItem("tableData", JSON.stringify(tableDataLocalStorage));
 }
 // Charger les données du local storage au chargement de la page
 window.addEventListener("load", function () {
@@ -246,7 +268,7 @@ window.addEventListener("load", function () {
       "</td><td>" +
       data.surface +
       "</td>";
-      console.log("repeat");
+    console.log("repeat");
     // Ajouter l'icône d'édition et l'icône de suppression à chaque ligne
     var actionCell = document.createElement("td");
 
@@ -257,7 +279,7 @@ window.addEventListener("load", function () {
       var row = this.parentNode.parentNode;
       openEditPopup(row);
     });
-   
+
     actionCell.appendChild(editIcon);
 
     var iconSpacing = document.createElement("span");
@@ -334,7 +356,7 @@ function updateTitle() {
   // var selectedStoreName = selectElement.value;
   var titleElement = document.getElementById("magasin-title");
 
-  titleElement.textContent = stors[id].name ;
+  titleElement.textContent = stors[id].name;
 }
 
 // Ajouter un écouteur d'événements de changement au sélecteur
