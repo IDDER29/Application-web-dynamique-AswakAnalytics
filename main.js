@@ -285,49 +285,13 @@ window.addEventListener("load", function () {
   console.log("hi how are you ");
 });
 
-// console.log("tableData:", tableData);
-// localStorage.setItem("tableData", JSON.stringify(tableData));
 
-// window.addEventListener("load", function () {
-//   var tableData = JSON.parse(localStorage.getItem("tableData")) || [];
-//   let cardData = tableData.filter(data => data.stor == stors[id].name);
-//   console.log("card Data" + cardData);
-//   var tableBody = document.getElementById("tableBody");
-
-//   cardData.forEach(function (data) {
-//     var newRow = document.createElement("tr");
-//     newRow.innerHTML =
-//       "<td>" +
-//       data.name +
-//       "</td><td>" +
-//       data.effectif +
-//       "</td><td>" +
-//       data.surface +
-//       "</td>";
-//     tableBody.appendChild(newRow);
-//   });
-// });
 
 var addButton = document.getElementById("addButton");
 addButton.addEventListener("click", function () {
   addToTable();
 });
-// function populateStoreName() {
-//   // Récupérer les magasins du stockage local
-//   let magazins = JSON.parse(localStorage.getItem("magazins")) || [];
 
-//   // Sélectionner l'élément du menu déroulant
-//   var selectElement = document.getElementById("editCategory");
-//   selectElement.innerHTML = "";
-
-//   // Parcourir tous les magasins et ajouter chaque nom au menu déroulant
-//   magazins.forEach(magasin => {
-//     var option = document.createElement("option");
-//     option.value = magasin.name;
-//     option.textContent = magasin.name;
-//     selectElement.appendChild(option);
-//   });
-// }
 // // Fonction pour mettre à jour le titre en fonction du magasin sélectionné
 function updateTitle() {
   // var selectElement = document.getElementById("editCategory");
@@ -337,10 +301,6 @@ function updateTitle() {
   titleElement.textContent = stors[id].name ;
 }
 
-// Ajouter un écouteur d'événements de changement au sélecteur
-// var selectElement = document.getElementById("editCategory");
-// selectElement.addEventListener("change", updateTitle);
 
-// Appeler la fonction pour mettre à jour le titre au chargement de la page
 
 

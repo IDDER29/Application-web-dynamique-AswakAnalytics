@@ -84,48 +84,84 @@
             <tbody id="tableBody">
       </tbody>
           </table>
-          <button id="add-button" onclick="openPopup()">Ajouter</button>
+          <button type="button" class="btn btn-primary"   id="add-button" onclick="openPopup()">Ajouter</button>
           </div>
   </div>
 
-  <div id="editPopup" class="popup">
-      <div class="popup-content">
-          <span class="close" onclick="closePopup()">&times;</span>
-          <h3>Ajout de Donnée</h3>
-          <form id="editForm">
-              <label for="editCategory">Année civile</label><br>
-              <select id="year" name="editCategory">
-                  <option value="2024" >2024</option>
-                  <option value="2023" >2023</option>
-                  <option value="2022" >2022</option>
-                  <option value="2021" >2021</option>
-                  <option value="2020" >2020</option>
-                  <option value="2019" >2019</option>         
-              </select><br>
-             <br>   
-              <label for="CA">Chiffres d'affaire (en dhs)</label><br>
-              <input type="text" id="CA" name="CA"><br>
-              <label for="effectif">Effectifs</label><br>
-              <input type="text" id="effectif" name="effectif"><br>
-              <label for="surface">Surface (m²)</label><br>
-              <input type="text" id="surface" name="surface"><br><br>
-              <button type="button" id="addButton" >Ajouter</button>
-          </form>
-      </div>  
-  </div>
-  <div id="modPopup" class="popup">
-      <div class="popup-content">
-           <span class="close" onclick="closeEditPopup()">&times;</span>
-           <h3>Modifier les données</h3>
-           <label for="editCA">Chiffres d'affaire (en dhs)</label><br>
-           <input type="number" id="modCa" name="editCA"><br>
-           <label for="editEffectif">Effectifs</label><br>
-           <input type="number" id="modEffectif" name="editEffectif"><br>
-           <label for="surface">Surface (m²)</label><br>
-           <input type="number" id="modSurface" name="surface"><br><br>
-           <button id="saveEdit">Enregistrer</button>
+ <div class="popup" id="editPopup" tabindex="-1" aria-labelledby="editPopupLabel" aria-hidden="true">
+  <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="editPopupLabel">Ajout de Donnée</h5>
+          <span class="close" data-bs-dismiss="modal" aria-label="Close" onclick="closePopup()">&times;</span>
        </div>
+       <div class="modal-body">
+         <form id="editForm">
+           <div class="mb-3">
+             <label for="year" class="form-label">Année civile</label>
+             <select class="form-select" id="year" name="editCategory">
+               <option value="2024">2024</option>
+               <option value="2023">2023</option>
+               <option value="2022">2022</option>
+               <option value="2021">2021</option>
+               <option value="2020">2020</option>
+               <option value="2019">2019</option>
+             </select>
+           </div>
+           <div class="mb-3">
+             <label for="CA" class="form-label">Chiffres d'affaire (en dhs)</label>
+             <input type="text" class="form-control" id="CA" name="CA">
+           </div>
+           <div class="mb-3">
+             <label for="effectif" class="form-label">Effectifs</label>
+             <input type="text" class="form-control" id="effectif" name="effectif">
+           </div>
+           <div class="mb-3">
+             <label for="surface" class="form-label">Surface (m²)</label>
+             <input type="text" class="form-control" id="surface" name="surface">
+           </div>
+         </form>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="closePopup()">Fermer</button>
+         <button type="button" class="btn btn-primary" id="addButton">Ajouter</button>
+       </div>
+     </div>
   </div>
+ </div>
+ 
+ 
+  <div class="popup" id="modPopup" tabindex="-1" aria-labelledby="editPopupLabel" aria-hidden="true">
+    <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="editPopupLabel">Modifier les données</h5>
+            <span class="close" data-bs-dismiss="modal" aria-label="Close" onclick="closeEditPopup()">&times;</span>
+         </div>
+         <div class="modal-body">
+           <form id="editForm">
+             <div class="mb-3">
+               <label for="editCA" class="form-label">Chiffres d'affaire (en dhs)</label>
+               <input type="number" class="form-control" id="modCa" name="editCA">
+             </div>
+             <div class="mb-3">
+               <label for="editEffectif" class="form-label">Effectifs</label>
+               <input type="number" class="form-control" id="modEffectif" name="effectif">
+             </div>
+             <div class="mb-3">
+               <label for="surface" class="form-label">Surface (m²)</label>
+               <input type="number" class="form-control" id="modSurface" name="surface">
+             </div>
+           </form>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="closeEditPopup()">Fermer</button>
+           <button type="button" class="btn btn-primary" id="saveEdit">Enregistrer</button>
+         </div>
+       </div>
+    </div>
+   </div>
+
 
   <!--Container Main end-->
 
