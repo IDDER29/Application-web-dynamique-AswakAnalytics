@@ -146,7 +146,7 @@ th {
     position: fixed;
     z-index: 1;
     left: 0;
-    top: 0;
+    top: 100px;
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -164,15 +164,18 @@ th {
 }
 .close {
     color: #aaa;
-    float: right;
+    /* float: right; */
     font-size: 28px;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 #add-button{
     background-color: #4EA5FF;
     border: none;
     border-radius: 5px;
     color: white;
+}
+#add-button:hover{
+    background-color: #207BFF;
 }
 .close:hover,
 .close:focus {
@@ -189,9 +192,17 @@ th {
     cursor: pointer; 
 }
 
+.edit-icon:hover {
+    color: #4EA5FF;
+}
+
 .delete-icon {
     color: red;
     cursor: pointer;
+}
+
+.delete-icon:hover {
+    color: darkred;
 }
 .icon-spacing {
     
@@ -207,11 +218,19 @@ th {
     border-radius: 5px;
     color: white;
 }
+
+#addButton:hover{
+    background-color: #207BFF;
+}
 #saveEdit{
     background-color: #4EA5FF;
     border: none;
     border-radius: 5px;
     color: white;
+}
+
+#saveEdit:hover{
+    background-color: #207BFF;
 }
 
 @media screen and (min-width: 768px) {

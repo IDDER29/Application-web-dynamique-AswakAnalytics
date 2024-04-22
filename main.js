@@ -136,7 +136,7 @@ function addToTable() {
   document.getElementById("tableBody").appendChild(newRow);
 
   var data = {
-    stor: stors[id].name,
+    stor:stors[id].name,
     name: name,
     chiffreAffaire: chiffreAffaire,
     effectif: effectif,
@@ -202,26 +202,20 @@ function saveEditedData() {
   cells[1].textContent = name;
   cells[2].textContent = effectif;
   cells[3].textContent = surface;
-  console.log("hi how are you ");
+console.log("hi how are you ");
   closeEditPopup();
   // validateInput();
   updateLocalStorage();
 }
 
 function updateLocalStorage() {
-  
   var tableRows = document.querySelectorAll("#tableBody tr");
-  var tableDataLocalStorage = JSON.parse(localStorage.getItem("tableData")) || [];
   var tableData = [];
-  let index = 0;
-
-  console.log('before passing the new values');
-  console.log(tableDataLocalStorage[id]);
 
   tableRows.forEach(function (row) {
     var cells = row.getElementsByTagName("td");
     var rowData = {
-      stor: stors[id].name, // Assuming 'stor' is defined elsewhere in your code
+      stor:stors[id].name,
       name: cells[0].textContent,
       chiffreAffaire: cells[1].textContent,
       effectif: cells[2].textContent,
@@ -229,24 +223,8 @@ function updateLocalStorage() {
     };
     tableData.push(rowData);
   });
-console.log("start the for each loop");
-   
-tableDataLocalStorage.forEach((data, i) => {
-  console.log(stors[id].name);
-  console.log(data.stor);
-  console.log(data.stor == stors[id].name);
-  if(data.stor == stors[id].name){
-     tableDataLocalStorage[i] = tableData[index];
-     index++;
-  }
- });
- 
-   
-  console.log("after passing the values edit");
- 
-  console.log(tableDataLocalStorage);
 
-  localStorage.setItem("tableData", JSON.stringify(tableDataLocalStorage));
+  localStorage.setItem("tableData", JSON.stringify(tableData));
 }
 // Charger les données du local storage au chargement de la page
 window.addEventListener("load", function () {
@@ -268,7 +246,7 @@ window.addEventListener("load", function () {
       "</td><td>" +
       data.surface +
       "</td>";
-    console.log("repeat");
+      console.log("repeat");
     // Ajouter l'icône d'édition et l'icône de suppression à chaque ligne
     var actionCell = document.createElement("td");
 
@@ -279,7 +257,7 @@ window.addEventListener("load", function () {
       var row = this.parentNode.parentNode;
       openEditPopup(row);
     });
-
+   
     actionCell.appendChild(editIcon);
 
     var iconSpacing = document.createElement("span");
@@ -307,62 +285,22 @@ window.addEventListener("load", function () {
   console.log("hi how are you ");
 });
 
-// console.log("tableData:", tableData);
-// localStorage.setItem("tableData", JSON.stringify(tableData));
 
-// window.addEventListener("load", function () {
-//   var tableData = JSON.parse(localStorage.getItem("tableData")) || [];
-//   let cardData = tableData.filter(data => data.stor == stors[id].name);
-//   console.log("card Data" + cardData);
-//   var tableBody = document.getElementById("tableBody");
-
-//   cardData.forEach(function (data) {
-//     var newRow = document.createElement("tr");
-//     newRow.innerHTML =
-//       "<td>" +
-//       data.name +
-//       "</td><td>" +
-//       data.effectif +
-//       "</td><td>" +
-//       data.surface +
-//       "</td>";
-//     tableBody.appendChild(newRow);
-//   });
-// });
 
 var addButton = document.getElementById("addButton");
 addButton.addEventListener("click", function () {
   addToTable();
 });
-// function populateStoreName() {
-//   // Récupérer les magasins du stockage local
-//   let magazins = JSON.parse(localStorage.getItem("magazins")) || [];
 
-//   // Sélectionner l'élément du menu déroulant
-//   var selectElement = document.getElementById("editCategory");
-//   selectElement.innerHTML = "";
-
-//   // Parcourir tous les magasins et ajouter chaque nom au menu déroulant
-//   magazins.forEach(magasin => {
-//     var option = document.createElement("option");
-//     option.value = magasin.name;
-//     option.textContent = magasin.name;
-//     selectElement.appendChild(option);
-//   });
-// }
 // // Fonction pour mettre à jour le titre en fonction du magasin sélectionné
 function updateTitle() {
   // var selectElement = document.getElementById("editCategory");
   // var selectedStoreName = selectElement.value;
   var titleElement = document.getElementById("magasin-title");
 
-  titleElement.textContent = stors[id].name;
+  titleElement.textContent = stors[id].name ;
 }
 
-// Ajouter un écouteur d'événements de changement au sélecteur
-// var selectElement = document.getElementById("editCategory");
-// selectElement.addEventListener("change", updateTitle);
 
-// Appeler la fonction pour mettre à jour le titre au chargement de la page
 
 
