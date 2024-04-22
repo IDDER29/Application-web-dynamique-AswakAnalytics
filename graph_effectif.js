@@ -7,12 +7,12 @@ function graph() {
 
 
     let namesData = [];
-    let surfaceData = [];
+    let effectifData = [];
 
     for (let i = 0; i < tableData.length; i++) {
         if (tableData[i].name === selectedYear) {
             namesData.push(String(tableData[i].stor));
-            surfaceData.push(parseFloat(tableData[i].surface));
+            effectifData.push(parseFloat(tableData[i].effectif));
         }
     }
     let xValues;
@@ -22,16 +22,16 @@ function graph() {
         xValues = namesData;
     }
     
-    if(surfaceData){
-        sValues = surfaceData;
+    if(effectifData){
+        sValues = effectifData;
     }
 
     
-    if (window.surface_Chart instanceof Chart) {
-        window.surface_Chart.destroy();
+    if (window.effectif_Chart instanceof Chart) {
+        window.effectif_Chart.destroy();
     }
     
-    window.surface_Chart = new Chart("surface_Chart", {
+    window.effectif_Chart = new Chart("effectif_Chart", {
         type: "bar",
         data: {
             labels: xValues,
@@ -45,7 +45,7 @@ function graph() {
                 legend: { display: false },
                 title: {
                     display: true,
-                    text: "Surface this year"
+                    text: "Effectif this year"
                 }
             },
             scales: {
@@ -74,21 +74,21 @@ function display_moyen_arith() {
     document.getElementById("ca_moyenne_arithm").innerHTML ="Chargement... ";
 
 
-    let surfaceData = [];
+    let effectifData = [];
 
     for (let i = 0; i < tableData.length; i++) {
         if (tableData[i].name === selectedYear) {
-            surfaceData.push(parseFloat(tableData[i].surface));
+            effectifData.push(parseFloat(tableData[i].effectif));
         }
     }
 
-    if (surfaceData && surfaceData.length > 0) {
+    if (effectifData && effectifData.length > 0) {
         let somme = 0;
-        for (let i = 0; i < surfaceData.length; i++) {
-            somme += surfaceData[i];
+        for (let i = 0; i < effectifData.length; i++) {
+            somme += effectifData[i];
         }
-        let moyen_arith = somme / surfaceData.length;
-        document.getElementById("ca_moyenne_arithm").innerHTML = moyen_arith.toFixed(2) + " m²"
+        let moyen_arith = somme / effectifData.length;
+        document.getElementById("ca_moyenne_arithm").innerHTML = moyen_arith + " effectif"
     }
 }
 document.addEventListener("DOMContentLoaded", ()=> {
@@ -106,22 +106,22 @@ function display_mode() {
       document.getElementById("ca_mode").innerHTML ="Chargement... ";
   
   
-      let surfaceData = [];
+      let effectifData = [];
   
       for (let i = 0; i < tableData.length; i++) {
           if (tableData[i].name === selectedYear) {
-            surfaceData.push(parseFloat(tableData[i].surface));
+            effectifData.push(parseFloat(tableData[i].effectif));
           }
       }
   
-    if (surfaceData && surfaceData.length > 0) {
-      let mode = surfaceData[0];
-      for (let i = 1; i < surfaceData.length; i++) {
-        if (surfaceData[i] > mode) {
-          mode = surfaceData[i];
+    if (effectifData && effectifData.length > 0) {
+      let mode = effectifData[0];
+      for (let i = 1; i < effectifData.length; i++) {
+        if (effectifData[i] > mode) {
+          mode = effectifData[i];
         }
       }
-      document.getElementById("ca_mode").innerHTML = mode.toFixed(2) + " m²";
+      document.getElementById("ca_mode").innerHTML = mode + " effectif";
     }
   }
   
@@ -140,26 +140,26 @@ function display_mode() {
     document.getElementById("ca_mediane").innerHTML ="Chargement... ";
 
 
-    let surfaceData = [];
+    let effectifData = [];
 
     for (let i = 0; i < tableData.length; i++) {
         if (tableData[i].name === selectedYear) {
-            surfaceData.push(parseFloat(tableData[i].surface));
+            effectifData.push(parseFloat(tableData[i].effectif));
         }
     }
 
-    if (surfaceData && surfaceData.length > 0) {
-        surfaceData.sort((a, b) => a - b);
+    if (effectifData && effectifData.length > 0) {
+        effectifData.sort((a, b) => a - b);
 
-        let index = surfaceData.length;
+        let index = effectifData.length;
         let mediane;
 
         if (index % 2 === 0) {
-            mediane = (surfaceData[index / 2] + surfaceData[(index / 2) - 1]) / 2;
+            mediane = (effectifData[index / 2] + effectifData[(index / 2) - 1]) / 2;
         } else {
-            mediane = surfaceData[Math.floor(index / 2)];
+            mediane = effectifData[Math.floor(index / 2)];
         }
-        document.getElementById("ca_mediane").innerHTML = mediane.toFixed(2) + " m²";
+        document.getElementById("ca_mediane").innerHTML = mediane + " effectif";
     }
 }
 
@@ -181,25 +181,25 @@ function display_ecart_type() {
     document.getElementById("ecart_type_x").innerHTML = "Chargement... ";
 
 
-    let surfaceData = [];
+    let effectifData = [];
 
     for (let i = 0; i < tableData.length; i++) {
         if (tableData[i].name === selectedYear) {
-            surfaceData.push(parseFloat(tableData[i].surface));
+            effectifData.push(parseFloat(tableData[i].effectif));
         }
     }
 
     let somme = 0;
-    for (let i = 0; i < surfaceData.length; i++) {
-        somme += surfaceData[i];
+    for (let i = 0; i < effectifData.length; i++) {
+        somme += effectifData[i];
     }
-    let moyenne = somme / surfaceData.length;
+    let moyenne = somme / effectifData.length;
 
     let variance = 0;
-    for (let i = 0; i < surfaceData.length; i++) {
-        variance += Math.pow(surfaceData[i] - moyenne, 2);
+    for (let i = 0; i < effectifData.length; i++) {
+        variance += Math.pow(effectifData[i] - moyenne, 2);
     }
-    variance /= surfaceData.length;
+    variance /= effectifData.length;
     let ecartType = Math.sqrt(variance);
 
     let coefficientVariation = (ecartType / moyenne) * 100; // mafhemtch
