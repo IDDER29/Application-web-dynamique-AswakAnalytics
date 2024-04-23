@@ -10,25 +10,30 @@ function graph() {
     let chiffreAffaireData = [];
     let namesData = [];
 
+
     for (let i = 0; i < tableData.length; i++) {
         if (tableData[i].name === selectedYear) {
             chiffreAffaireData.push(parseFloat(tableData[i].chiffreAffaire));
             namesData.push(String(tableData[i].stor));
+
         }
     }
     let yValues;
     let xValues;
 
-    if(namesData){
-         xValues = namesData;
+
+    if (namesData) {
+        xValues = namesData;
     }
-    if(chiffreAffaireData){
+    if (chiffreAffaireData) {
         yValues = chiffreAffaireData;
-   }
+    }
+   
 
     if (window.myChart instanceof Chart) {
         window.myChart.destroy();
     }
+    
     window.myChart = new Chart("myChart", {
         type: "bar",
         data: {
@@ -56,7 +61,8 @@ function graph() {
             }
         }
     });
+    
 }
-document.addEventListener("DOMContentLoaded", ()=> {
+document.addEventListener("DOMContentLoaded", () => {
     graph();
 });
