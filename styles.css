@@ -6,7 +6,7 @@
   --first-color-light:#4EA5FF ;
   --second-color: #004BB7;
   --white-color: #F5F7FA;
-  --body-font: "Roboto", sans-serif;
+  --body-font: "Nunito", sans-serif;
   --normal-font-size: 1rem;
   --z-fixed: 100;
 }
@@ -15,9 +15,7 @@
 ::after {
   box-sizing: border-box;
 }
-
 body {
-  
   position: relative;
   margin: var(--header-height) 0 0 0;
   padding: 0 1rem;
@@ -31,7 +29,6 @@ a {
 }
 img{
     width: 100%;
-    height: 100%;
 }
 .aside_logo{
     width: 50%;
@@ -77,9 +74,7 @@ img{
   transition: 0.5s;
   z-index: var(--z-fixed);
 }
-
-#nav {
-
+.nav {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -126,15 +121,116 @@ img{
 .active {
   color: var(--second-color);
 }
-
+.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 2px;
+  height: 32px;
+  background-color: var(--white-color);
+}
 .height-100 {
   height: 100vh;
 }
-.form-select {
-  width: fit-content;
+th, td {
+	border: 1px solid #C8A9A9;
+	padding: 15px;
+	text-align: left;
 }
-.btn-primary{
-  background-color: var(--first-color-light);
+
+th {
+	background-color: #f2f2f2;
+}
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.popup-content {
+    width: 300px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.956);
+    margin: 0 auto;
+    margin-top: 100px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.close {
+    color: #aaa;
+    /* float: right; */
+    font-size: 28px;
+    /* font-weight: bold; */
+}
+#add-button{
+    background-color: #4EA5FF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+#add-button:hover{
+    background-color: #207BFF;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.icon {
+    /* Ajoutez votre style pour l'icône ici */
+    cursor: pointer;
+}
+.edit-icon {
+    color: #207BFF;
+    cursor: pointer; 
+}
+
+.edit-icon:hover {
+    color: #4EA5FF;
+}
+
+.delete-icon {
+    color: red;
+    cursor: pointer;
+}
+
+.delete-icon:hover {
+    color: darkred;
+}
+.icon-spacing {
+    
+    margin-right: 10px; /* ou toute autre valeur de marge que vous souhaitez */
+}
+.action-cell {
+    text-align: center; /* Centrage horizontal */
+    vertical-align: middle; /* Centrage vertical */
+}
+#addButton{
+    background-color: #4EA5FF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+#addButton:hover{
+    background-color: #207BFF;
+}
+#saveEdit{
+    background-color: #4EA5FF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+#saveEdit:hover{
+    background-color: #207BFF;
 }
 
 @media screen and (min-width: 768px) {

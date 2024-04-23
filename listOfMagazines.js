@@ -5,38 +5,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
   // Your code to run since DOM is loaded and ready
   let gridCardContiner = document.querySelector(".grid_container");
   
-  let stors = [
-    {
-      name: "Sidi maarouf",
-      city: "Casablanca",
-      street: "sidi maarouf",
-      date:"2010"
-    },
-    {
-      name: "Sidi maarouf",
-      city: "Casablanca",
-      street: "sidi maarouf",
-      date:"2010"
-    },
-    {
-      name: "Sidi maarouf",
-      city: "Casablanca",
-      street: "sidi maarouf",
-      date:"2010"
-    },
-    {
-      name: "Sidi maarouf",
-      city: "Casablanca",
-      street: "sidi maarouf",
-      date:"2010"
-    },
-    {
-      name: "Sidi maarouf",
-      city: "Casablanca",
-      street: "sidi maarouf",
-      date:"2010"
-    },
-  ];
+  let stors = JSON.parse(localStorage.getItem("magazins")) || [];
   
 
 
@@ -60,7 +29,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
               <i class="fa-solid fa-location-dot"></i>
               <span> ${stor.city}, </span><span class="fst-italic">${stor.street}</span>
             </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="./table.html" class="btn btn-primary" id="btn_show_data" data-id="${stors.indexOf(stor)}">Show</a>
+           
           </div>
         </div>
       </div>
@@ -97,6 +67,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
       if (radio.checked) {
         radio.closest("label").classList.add("active");
         if(radio.value =="vertical" ){
+      
           gridCardContiner.classList.add("row-cols-md-4");
           cardContent.forEach((content) => content.classList.remove("col-md-8"));
           gridCardContiner.classList.remove("row-cols-md-2");
@@ -130,6 +101,13 @@ document.addEventListener("DOMContentLoaded", ()=> {
     radio.addEventListener("change", findSelected);
   });
   findSelected();
-  
+
+  gridCardContiner.addEventListener("click", (e) => {
+    if (e.target.id === "btn_show_data") {
+       let id = e.target.dataset.id;
+       // Assuming you want to store the id in localStorage
+       localStorage.setItem('selectedId', id);
+    }
+   });
   // End the functionality of  change the sutation of the card uppers
 });

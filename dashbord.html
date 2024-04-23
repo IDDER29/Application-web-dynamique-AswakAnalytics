@@ -50,7 +50,7 @@
                         <i class="bx bxs-store-alt nav_icon"></i>
                         <span class="nav_name">Magasins</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a href="./ajouter.html" class="nav_link">
                         <i class="bx bxs-add-to-queue nav_icon"></i>
                         <span class="nav_name">Ajouter Magasin</span>
                     </a>
@@ -84,6 +84,14 @@
                     </ul>
 
                 </div><br>
+                <div class="year-selector">
+                    <select id="year-select" class="form-select">
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <!-- Ajoutez d'autres années au besoin -->
+                    </select>
+                </div>
 
                 <div class="row row-cols-1 row-cols-md-3 g-3 justify-content-between ">
                     <!-- Card 1 -->
@@ -142,33 +150,54 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <script>
         var xValues = ["Jan", "Fev", "Mar", "Avr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
+    
         let tableData_JSON = localStorage.getItem("tableData");
-        let tableData = JSON.parse(tableData_JSON);
+        let tableData = JSON.parse(tableData_JSON) || [];
         let chiffreAffaireData = [];
         for (let i = 0; i < tableData.length; i++) {
             chiffreAffaireData.push(parseFloat(tableData[i].chiffreAffaire));
         }
-        
+    
         let yValues = chiffreAffaireData;
-
+    
         new Chart("myChart", {
             type: "bar",
             data: {
                 labels: xValues,
                 datasets: [{
-                    backgroundColor: "blue",
-                    data: yValues
+                    label: 'Products Sold',
+                    data: yValues,
+                    backgroundColor: function(context) {
+                        var index = context.dataIndex;
+                        var value = context.dataset.data[index];
+                        return value < 50000 ? 'rgba(75, 192, 192, 0.2)' :
+                               value < 100000 ? 'rgba(255, 206, 86, 0.2)' :
+                               'rgba(255, 99, 132, 0.2)';
+                    },
+                    borderColor: function(context) {
+                        var index = context.dataIndex;
+                        var value = context.dataset.data[index];
+                        return value < 50000 ? 'rgba(75, 192, 192, 1)' :
+                               value < 100000 ? 'rgba(255, 206, 86, 1)' :
+                               'rgba(255, 99, 132, 1)';
+                    },
+                    borderWidth: 1
                 }]
             },
             options: {
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: false },
+                    legend: { display: true },
                     title: {
                         display: true,
-                        text: "Products sold this year"
+                        text: "Products sold this year",
+                        font: {
+                            size: 20
+                        }
                     }
                 },
                 scales: {
@@ -177,11 +206,35 @@
                         ticks: {
                             stepSize: 10000
                         }
+                    },
+                    x: {
+                        ticks: {
+                            autoSkip: false
+                        }
+                    }
+                },
+                animation: {
+                    duration: 1000,
+                    easing: 'easeOutBounce'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            label += parseFloat(tooltipItem.yLabel).toLocaleString();
+                            return label;
+                        }
                     }
                 }
             }
         });
     </script>
+    
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
