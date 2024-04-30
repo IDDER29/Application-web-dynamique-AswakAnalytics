@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
   }
   appendCardsToConter(stors);
   selectedCity.addEventListener('change', ()=> {
-    console.log("hi hi");
+    
     let filteredStors;
 
     if(selectedCity.value == 'All'){
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     }else{
       filteredStors = stors.filter(el => el.city == selectedCity.value);
     }
-    console.log(filteredStors);
+    
     appendCardsToConter(filteredStors);
     findSelected();
    });
